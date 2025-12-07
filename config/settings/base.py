@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -45,6 +46,21 @@ INSTALLED_APPS = [
     "apps.catalog",
     "apps.library",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        # By default, lock everything down. Will open specific views explicitly.
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # Access tokens last 1 hour
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Refresh tokens last 1 day
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
