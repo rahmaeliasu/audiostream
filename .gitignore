@@ -1,0 +1,30 @@
+# General
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Environment variables (CRITICAL)
+.env
+.env.local
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Media and Static
+media/
+staticfiles/
+
+# IDE settings (VS Code, JetBrains)
+.vscode/
+.idea/
+
+# Mac OS specific
+.DS_Store
